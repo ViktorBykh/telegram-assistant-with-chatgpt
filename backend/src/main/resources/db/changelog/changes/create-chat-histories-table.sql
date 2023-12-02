@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS chat_histories (
+id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY,
+user_id BIGINT,
+user_message TEXT DEFAULT NULL,
+bot_response TEXT DEFAULT NULL,
+date_time TIMESTAMP DEFAULT NULL,
+PRIMARY KEY (id),
+CONSTRAINT fk_user
+    FOREIGN KEY(user_id)
+        REFERENCES users(id)
+);

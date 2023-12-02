@@ -1,0 +1,89 @@
+<div class="chat-history">
+  <h1 class="chat-history__title">Chat Histories</h1>
+  <a type="button" class="btn btn-dark chat-history__back-to-users" routerLink="/admin/content">Back to Users</a>
+  <div class="row">
+    <table class="table table-hover table-striped table-dark" style="border-radius: 40px;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">External id</th>
+          <th scope="col">Full name</th>
+          <th scope="col">User message</th>
+          <th scope="col">Bot response</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chat of chatHistories; let i= index">
+          <th scope="row">{{ i+1 }}</th>
+          <td>{{ chat.externalId }}</td>
+          <td>{{ chat.firstName + ' ' + chat.lastName }}</td>
+          <td>{{ chat.userMessage }}</td>
+          <td>{{ chat.botResponse }}</td>
+          <td>{{ chat.dateTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-3 mb-1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu1"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Count items: <b>{{ count }}</b>
+            </button>
+            <div class="dropdown-menu dropdown-menu-up" aria-labelledby="dropdownMenu1">
+              <button class="dropdown-item" type="button" (click)="setCount(5)">5</button>
+              <button class="dropdown-item" type="button" (click)="setCount(10)">10</button>
+              <button class="dropdown-item" type="button" (click)="setCount(15)">15</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Page number: <b>{{ page }}</b>
+            </button>
+            <div class="dropdown-menu dropdown-menu-up" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" (click)="setPage(0)">0</button>
+              <button class="dropdown-item" type="button" (click)="setPage(1)">1</button>
+              <button class="dropdown-item" type="button" (click)="setPage(2)">2</button>
+              <button class="dropdown-item" type="button" (click)="setPage(3)">3</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-1">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu3"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort by: <b>{{ getSortByText(sortBy) }}</b>
+            </button>
+            <div class="dropdown-menu dropdown-menu-up" aria-labelledby="dropdownMenu3">
+              <button class="dropdown-item" type="button" (click)="setSortBy('userMessage')">Message</button>
+              <button class="dropdown-item" type="button" (click)="setSortBy('botResponse')">Response</button>
+              <button class="dropdown-item" type="button" (click)="setSortBy('dateTime')">Date</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-1">
+          <div class="dropright">
+            <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu4"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort order: <b>{{ getSortOrderText(sortOrder) }}</b>
+            </button>
+            <div class="dropdown-menu dropdown-menu-up" aria-labelledby="dropdownMenu4">
+              <button class="dropdown-item" type="button" (click)="setSortOrder(':ASC')">Ascending order</button>
+              <button class="dropdown-item" type="button" (click)="setSortOrder(':DESC')">Descending order</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 offset-md-9">
+          <div class="dropdown">
+            <button type="submit" class="btn btn-dark w-100">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

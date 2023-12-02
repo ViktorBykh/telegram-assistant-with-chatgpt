@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+html {
+  font-family: Lato, Courier, monospace;
+}
+
+body {
+  margin: 0;
+  --header-height: 70px;
+  --footer-height: 70px;
+}

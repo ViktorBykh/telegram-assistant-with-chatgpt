@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_ROOT_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_TCP_PORT=${POSTGRES_PORT}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+  backend:
+    container_name: backend
+    image: backend
+    build: backend/.
+    env_file: ./.env
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+      - ${BACKEND_DEBUG_PORT}:${BACKEND_DEBUG_PORT}
+    depends_on:
+      - postgres
+    environment:
+     - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+     - spring.datasource.url=jdbc:postgresql://postgres:${POSTGRES_PORT}/${POSTGRES_DB}
+     - spring.datasource.username=${POSTGRES_USER}
+     - spring.datasource.password=${POSTGRES_PASSWORD}
+     - spring.jpa.hibernate.ddl-auto=validate
+  
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: frontend/.
+    env_file: ./.env
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_DOCKER_PORT}
+    depends_on:
+      - backend

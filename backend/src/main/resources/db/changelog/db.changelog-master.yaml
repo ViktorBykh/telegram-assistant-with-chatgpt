@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+     file: db/changelog/changes/create-admins-table.sql
+  - include:
+      file: db/changelog/changes/create-users-table.sql
+  - include:
+      file: db/changelog/changes/create-chat-histories-table.sql
+  - include:
+      file: db/changelog/changes/insert-users.sql
+  - include:
+      file: db/changelog/changes/insert-chat-histories.sql

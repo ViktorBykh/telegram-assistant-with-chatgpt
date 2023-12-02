@@ -1,0 +1,21 @@
+<div class="navigation">
+  <header class="navigation__header">
+    <a routerLink="/admin/main">
+      <img src="assets/images/angular_logo.png" alt="Angular" class="navigation__logo__image">
+    </a>
+    <ul class="navigation__list">
+      <li>
+        <a class="navigation__link" routerLink="/admin/main">Main</a>
+      </li>
+      <li>
+        <a class="navigation__link" routerLink="/admin/content">Content</a>
+      </li>
+      <li>
+        <a class="navigation__link" routerLink="/admin/login">Login</a>
+      </li>
+      <li>
+        <a class="navigation__link" routerLink="/admin/main" (click)="onLogout($event)">Logout</a>
+      </li>
+    </ul>
+  </header>
+</div>

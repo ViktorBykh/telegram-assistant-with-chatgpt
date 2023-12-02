@@ -1,0 +1,14 @@
+.footer {
+  display: block;
+  height: var(--footer-height);
+  background-color: #212529;
+  text-align: center;
+  font-weight: bold;
+
+  &__link {
+    line-height: var(--footer-height);
+    padding: 0 10px;
+    color: #fdfff5;
+    text-decoration: none;
+  }
+}

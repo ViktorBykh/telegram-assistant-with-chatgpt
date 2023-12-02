@@ -1,0 +1,29 @@
+html {
+  margin-top: 25px;
+  margin-block-end: 25px;
+  min-height: calc(100vh 
+  - var(--header-height) 
+  - var(--footer-height) 
+  - 40px);
+
+  margin-right: 20px;
+  margin-left: 20px;
+  min-width: calc(100vh 
+  - var(--header-height) 
+  - var(--footer-height) 
+  - 40px);
+}
+
+.container {
+  padding-top: 20px;
+  min-height: calc(100vh 
+  - var(--header-height) 
+  - var(--footer-height)
+  + 10px);
+  margin: 0 auto;
+  min-width: calc(100vh 
+  - var(--header-height) 
+  - var(--footer-height)
+  + 10px);
+}
+
